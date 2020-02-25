@@ -4,27 +4,16 @@ AT91SAM9N12 based embedded linux board hardware and operating system
 ![Untitled](https://user-images.githubusercontent.com/61315249/75203603-9b86fe80-577f-11ea-85d4-b7b913c84fa1.png)
 
 
+  STEP BY STEP GUIDE FOR FLASHING BOARD TO RUN LINUX
+  TESTED WITH UBUNTU 16.04.6 and 18.04.2 LTS
+  
+  Both uboot and at91bootstrap configured to 115200 8N1 no parity. 
+  When buildroot starts (linux itself), it also starts uart with 115200. 
 
-###
-###
-###	    STEP BY STEP GUIDE FOR FLASHING BOARD TO RUN LINUX
-###	    TESTED WITH UBUNTU 16.04.6 and 18.04.2 LTS
-###
-###
-### 	READ THIS SECTION FIRST!!!: In Ready_Files folder i put working files they can be used directly working perfectly. (Go  ###   to 1 and 3 to flash them to board).
-###	  There is nothing more to do for uboot and at91bootstrap (no need to build them from start) unless i add some hardware ###   code for example to do something with a peripheral.
-###
-###	  Also both uboot and at91bootstrap configured to 115200 8N1 no parity. 
-###   When buildroot starts (linux itself), it also starts uart with 115200. 
-###
-###	  IMPORTANT: Do not use screen terminal command to monitor it does not show correct even baud rate set correctly.
-###		   Use TeraTerm on Windows or Picocom on Mac and set baud rate to 118200 8bit no parity 1 stop it works perfectly.
-###		   In at91bootstrap mcu clock is configured from 400MHz to 300MHz for changing RAM from 133MHz to 100MHz.
-###		   but speed is 301.333 MHz and 101.333 so baudrate is not working correctly 115200 that is why changed to 118200.
-###
-###
-###
-
+  IMPORTANT: Do not use screen terminal command to monitor it does not show correct even baud rate set correctly.
+             Use TeraTerm on Windows or Picocom on Mac and set baud rate to 118200 8bit no parity 1 stop it works perfectly.
+	     In at91bootstrap mcu clock is configured from 400MHz to 300MHz for changing RAM from 133MHz to 100MHz.
+	     but speed is 301.333 MHz and 101.333 so baudrate is not working correctly 115200 that is why changed to 118200.
 
 
 1. This part describes how board is connected over USB and what commands needed to see on sam_ba program
