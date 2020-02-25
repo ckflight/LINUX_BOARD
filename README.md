@@ -35,8 +35,8 @@ AT91SAM9N12 based embedded linux board hardware and operating system
    Now sam-ba can see board as /dev/ttyACM0
 
 
-2. 
-	Before start install these libraries:
+2. Before start install these libraries:
+
 	1. sudo apt install libncurses5 libncursesw5-dev libncurses5-dev
 	2. sudo apt install make
 	3. sudo apt install gcc-arm-linux-gnueabi
