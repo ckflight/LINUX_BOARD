@@ -56,7 +56,7 @@ AT91SAM9N12 based embedded linux board hardware and operating system
 
 2.A How to compile and create at91sambootstrap files:
  
-   I put at91bootstrap-3-3.8.tar.gz to Linux_Board_HowTo folder it is the latest version and works
+   I put at91bootstrap-3-3.8.tar.gz, it is the latest version and works
    unzip to Ubuntu and use it. For any case download link is below:
 	
 	http://repository.timesys.com/buildsources/a/at91bootstrap-3/
@@ -67,7 +67,7 @@ AT91SAM9N12 based embedded linux board hardware and operating system
  
    with
 
- 	/Linux_Board_HowTo/at91bootstrap Files/at91sam9n12ek.c and .h
+ 	/at91bootstrap Files/at91sam9n12ek.c and .h
  
    Go to the at91bootstrap-3-3.8 folder location over terminal and apply commands
 
@@ -95,21 +95,21 @@ AT91SAM9N12 based embedded linux board hardware and operating system
 
 	 http://repository.timesys.com/buildsources/u/u-boot/
 
-   Go to Linux_Board_HowTo folder and change
+   Go to folder and change
 
 	u-boot-2015.01/board/atmel/at91sam9n12ek/at91sam9n12ek.c file 
 	with 
-	/Linux_Board_HowTo/u-boot Files/at91sam9n12ek.c
+	/u-boot Files/at91sam9n12ek.c
 
     and
 
 	u-boot-2015.01/include/configs/at91sam9n12ek.h file 
 	with	
-	/Linux_Board_HowTo/u-boot Files/at91sam9n12ek.h
+	/u-boot Files/at91sam9n12ek.h
 	
     also For Ubuntu 16.04 gcc5.h, For Ubuntu 18.04 gcc7.h add (they have same code inside as well)
 
-	/Linux_Board_HowTo/u-boot Files/compiler-gcc5.h or gcc.7 file
+	/u-boot Files/compiler-gcc5.h or gcc.7 file
 	to
 	u-boot-2015.01/include/linux folder
 	
@@ -123,8 +123,6 @@ AT91SAM9N12 based embedded linux board hardware and operating system
 	3. make CROSS_COMPILE=arm-linux-gnueabi-
 
 	RESULT: The u-boot.bin is in u-boot-2015.01 folder
-
-
 
 
 
@@ -144,9 +142,9 @@ AT91SAM9N12 based embedded linux board hardware and operating system
 
    I used ready linux binary tree files with config files. (Read Linux Embedded Notes 5. DEVICE TREE: part for details of device tree .dts file)
   
-   Go to Linux_Board_HowTo/Buildroot_Files folder and copy 3 files from
+   Go to /Buildroot_Files folder and copy 3 files from
 
-	/Linux_Board_HowTo/Buildroot Files/
+	/Buildroot Files/
 	to
 	/buildroot-2015.02 main folder
 
@@ -218,7 +216,7 @@ AT91SAM9N12 based embedded linux board hardware and operating system
 	* rootfs.ubi				     -----> 0x800000
 
 
-   Unzip Linux_Board_HowTo/sam-ba to ubuntu and connect board over usb (see 1) then click connect.
+   Unzip /sam-ba to ubuntu and connect board over usb (see 1) then click connect.
    Select "NandFlash" tab and from Scripts select "Enable NandFlash" click execute button.
    It should print as below:
 
@@ -294,11 +292,6 @@ AT91SAM9N12 based embedded linux board hardware and operating system
 
    3.5. Set Address to 0x800000 and from "Send File Name" folder selector 
       select "rootfs.ubi" file and click "Send File".
-      
-      It should print as below:
-
-
-
 
 
 
