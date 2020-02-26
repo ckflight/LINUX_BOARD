@@ -3,7 +3,7 @@ AT91SAM9N12 based embedded linux board hardware and operating system files
 
 ![IMG_20200227_002110](https://user-images.githubusercontent.com/61315249/75391102-8bdff500-58fa-11ea-9e2c-1d8b6b9425e5.jpg)
 
-![Untitled](https://user-images.githubusercontent.com/61315249/75203603-9b86fe80-577f-11ea-85d4-b7b913c84fa1.png)
+![Untitled](https://user-images.githubusercontent.com/61315249/75391308-e1b49d00-58fa-11ea-8e9b-d573de76c693.png)
 
 
   STEP BY STEP GUIDE FOR FLASHING BOARD TO RUN LINUX
