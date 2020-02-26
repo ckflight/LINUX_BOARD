@@ -1,9 +1,7 @@
 # LINUX_BOARD
-AT91SAM9N12 based embedded linux board hardware and operating system
+AT91SAM9N12 based embedded linux board hardware and operating system files
 
-
-![IMG_20200227_002110](https://user-images.githubusercontent.com/61315249/75390838-0eb48000-58fa-11ea-83ce-9b2dbb82f88c.jpg)
-
+![IMG_20200227_002110](https://user-images.githubusercontent.com/61315249/75391102-8bdff500-58fa-11ea-9e2c-1d8b6b9425e5.jpg)
 
 ![Untitled](https://user-images.githubusercontent.com/61315249/75203603-9b86fe80-577f-11ea-85d4-b7b913c84fa1.png)
 
