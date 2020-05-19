@@ -19,11 +19,8 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
   STEP BY STEP GUIDE FOR FLASHING BOARD TO RUN LINUX
   TESTED WITH UBUNTU 16.04.6 and 18.04.2 LTS
   
-  Both uboot and AT91Bootstrap configured to 115200 8N1 no parity. 
-  When buildroot starts (linux itself), it also starts uart with 115200. 
 
-  IMPORTANT: Use TeraTerm on Windows or Picocom on Mac and set baud rate to 118200 8bit no parity 1 stop it works perfectly.
-	     The reason of this baudrate is that, In AT91Bootstrap, cpu clock is configured from 400MHz to 300MHz for changing RAM from 133MHz to 100MHz. But speed is actually 301.333 MHz and 101.333 so characters are not received correctly when set to 115200 that is why baudrate is changed to 118200. Then it is easy to enter Linux Operating system without any problem.
+  IMPORTANT: Use TeraTerm on Windows or Picocom on Mac and set baud rate to 118200 8bit no parity 1 stop it works perfectly. The reason of this baudrate is that, In AT91Bootstrap, cpu clock is configured from 400MHz to 300MHz for changing RAM from 133MHz to 100MHz. But speed is actually 301.333 MHz and 101.333 so characters are not received correctly when set to 115200 that is why baudrate is changed to 118200. Then it is easy to enter Linux Operating system without any problem. However in buildroot, u-boot and AT91Bootstrap files the uart is configured to 115200 8N1 no parity.
 
 
 1. This part describes how board is connected over USB and what commands needed to see on sam_ba program
