@@ -1,11 +1,15 @@
 # LINUX_BOARD
 
-AT91SAM9N12 based embedded linux board hardware and operating system files.
-It has 133MHz RAM and 4Gb NAND Flash
+AT91SAM9N12 Microprocessor with Memory Management Unit based embedded linux board hardware and operating system files.
+It has 133MHz RAM and 4Gb NAND Flash and QSPI Flash Interfaces.
 
 ![IMG_20200227_002110](https://user-images.githubusercontent.com/61315249/75391102-8bdff500-58fa-11ea-9e2c-1d8b6b9425e5.jpg)
 
+![linux board](https://user-images.githubusercontent.com/61315249/82347687-9cd36a80-9a00-11ea-9536-8540351ce7bf.jpg)
+
 ![Untitled](https://user-images.githubusercontent.com/61315249/75391308-e1b49d00-58fa-11ea-8e9b-d573de76c693.png)
+
+
 
 
   STEP BY STEP GUIDE FOR FLASHING BOARD TO RUN LINUX
