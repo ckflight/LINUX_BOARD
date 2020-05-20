@@ -1,6 +1,6 @@
 # LINUX_BOARD
 
-AT91SAM9N12 Microprocessor with Memory Management Unit based embedded linux board hardware and operating system files.
+AT91SAM9N12 Microprocessor with Memory Management Unit based Embedded Linux Board hardware and operating system files.
 It has 133MHz RAM and 4Gb NAND Flash and QSPI Flash Interfaces.
 
 This design is custom version of SAM9N12-EK and it is using RAM with different speed and latency + using NAND Flash so AT91Bootstrap Hardware initialization files must be custom. The PLL and clocking settings as well as RAM latency values and NAND interface pinouts are configured. Check LINUX_BOARD/Linux_Files/At91bootstrap Files/at91sam9n12ek.c and .h files. 
