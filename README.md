@@ -1,4 +1,4 @@
-# Embedded Linux Board Running Linux
+# Embedded Linux Board Running Custom Linux Distribution
 
 AT91SAM9N12 Microprocessor with Memory Management Unit based Embedded Linux Board hardware and operating system files.
 It has 133MHz RAM and 4Gb NAND Flash and QSPI Flash Interfaces.
