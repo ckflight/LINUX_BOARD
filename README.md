@@ -1,11 +1,15 @@
 # Embedded Linux Board Running Custom Linux Distribution
 
-AT91SAM9N12 Microprocessor with Memory Management Unit based Embedded Linux Board hardware and operating system files.
-It has 133MHz RAM and 4Gb NAND Flash and QSPI Flash Interfaces.
+### Project Info:
 
-This design is custom version of SAM9N12-EK and it is using RAM with different speed and latency + using NAND Flash so AT91Bootstrap Hardware initialization files must be custom. The PLL and clocking settings as well as RAM latency values and NAND interface pinouts are configured. Check LINUX_BOARD/Linux_Files/At91bootstrap Files/at91sam9n12ek.c and .h files. 
+ * AT91SAM9N12 Microprocessor with Memory Management Unit based Embedded Linux Board hardware and operating system files.
+It has 133 MHz RAM and 4 Gb NAND Flash and QSPI Flash Interfaces.
 
-Buildroot is used for custom linux distribution. Check step by step guide below for details. Follow Ubuntu, u-boot and buildroot versions strictly as indicated below guide to make it compile properly.
+ * This design is the custom version of SAM9N12-EK. The custom design has a RAM with different speed and latency, also it is using NAND Flash as a memory. Therefore, AT91Bootstrap Hardware initialization files must be customized accordingly. Briefly, the PLL and clocking settings as well as RAM latency values and NAND interface pinouts are changed accordingly. To see the details of the changes, please check **LINUX_BOARD/Linux_Files/At91bootstrap Files/at91sam9n12ek.c and .h** files. 
+
+ * Buildroot is used for custom linux distribution. Check step by step guide below for details. Follow Ubuntu, u-boot and buildroot versions strictly as indicated below to make it compile properly.
+
+### Final Board Screenshots:
 
 ![IMG_20200227_002110](https://user-images.githubusercontent.com/61315249/75391102-8bdff500-58fa-11ea-9e2c-1d8b6b9425e5.jpg)
 
@@ -13,36 +17,32 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 
 ![Untitled](https://user-images.githubusercontent.com/61315249/75391308-e1b49d00-58fa-11ea-8e9b-d573de76c693.png)
 
+### Important Notes: 
 
-
-
-  STEP BY STEP GUIDE FOR FLASHING BOARD TO RUN LINUX
-  TESTED WITH UBUNTU 16.04.6 and 18.04.2 LTS
+ * Use TeraTerm on Windows or Picocom on Mac OSx to be able to set the baud rate to 118200 8bit no parity 1 stop. The reason of this baudrate is that, In AT91Bootstrap, cpu clock is configured from 400MHz to 300MHz for changing RAM speed from 133MHz to 100MHz. Since PLL multipliers are not strickly generating 300 and 100 MHz, the actual speeds are 301.333 MHz and 101.333. This main clock difference changes all other peripherals' clocking. As result of this, characters are not received correctly when the baudrate is set to 115200. When the baudrate is set to 118200 on HOST side, the hardware and the HOST side can talk without any issue. **(However in buildroot, u-boot and AT91Bootstrap files the uart is configured to 115200 8N1 no parity)**
+ 
+ * The steps below are tested with UBUNTU 16.04.6 and 18.04.2 LTS.
+ 
+### STEP BY STEP GUIDE FOR FLASHING BOARD TO RUN LINUX 
   
-
-  IMPORTANT: Use TeraTerm on Windows or Picocom on Mac and set baud rate to 118200 8bit no parity 1 stop it works perfectly. The reason of this baudrate is that, In AT91Bootstrap, cpu clock is configured from 400MHz to 300MHz for changing RAM from 133MHz to 100MHz. But speed is actually 301.333 MHz and 101.333 so characters are not received correctly when set to 115200 that is why baudrate is changed to 118200. Then it is easy to enter Linux Operating system without any problem. However in buildroot, u-boot and AT91Bootstrap files the uart is configured to 115200 8N1 no parity.
-
-
-1. This part describes how board is connected over USB and what commands needed to see on sam_ba program
+#### 1. This part describes how board is connected over USB and what commands needed to see on sam_ba program
 
    If linux board is new and fresh then connect over usb to linux virtual computer
    If linux board is flashed previously with files then connect nandflash's pin41 to ground and plug usb
- 
-   Linux will see device as /dev/ttyACM0 but sam_ba cannot see so type command (It is required every time):
- 	
-	sudo chmod a+rw /dev/ttyACM0 
-   or 
-
-   Add read write permission to usb device to not write above command every time.
-   Go to /etc/udev/rules.d and create a rule file such as myusb.rules file and add the line
+   Linux will see device as /dev/ttyACM0 but sam_ba cannot see so type command (It is required every time): 
+   
+   	sudo chmod a+rw /dev/ttyACM0
+   
+   Or add read write permission to usb device to not write above command every time.To do that, 
+   go to /etc/udev/rules.d and create a rule file such as myusb.rules file and add the line
  	
 	sudo nano /etc/udev/rules.d/filename.rules
 	KERNEL=="ttyACM[0-9]*",MODE="0666"
 
-   Now sam-ba can see board as /dev/ttyACM0
+    Now sam-ba can see board as /dev/ttyACM0
 
 
-2. Before start install these libraries:
+#### 2. Before start install these libraries:
 
 	1. sudo apt install libncurses5 libncursesw5-dev libncurses5-dev
 	2. sudo apt install make
@@ -61,7 +61,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 	C. BUILDROOT 		(LINUX KERNEL + ROOTFS (Our python c compiler nano etc apps are in rootfs) )
 
 
-2.A How to compile and create at91sambootstrap files:
+#### 2.1 How to compile and create at91sambootstrap files:
  
    I put at91bootstrap-3-3.8.tar.gz, it is the latest version and works
    unzip to Ubuntu and use it. For any case download link is below:
@@ -95,7 +95,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 
 
 
- 2.B How to compile and create u-boot files:
+#### 2.2 How to compile and create u-boot files:
 
    I put u-boot-2015.1.tar.gz to folder no need to download newer versions since include files naming are changed
    and they are not compiling without error. Unzip it to Ubuntu and use. For any case download link is below:
@@ -133,7 +133,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 
 
 
- 2.C How to compile and create build root files:
+#### 2.3 How to compile and create build root files:
    
    I put buildroot-2015.2.tar.gz to folder and this version works. For any case download link is below:
 
@@ -208,7 +208,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 
 
 	
- 3. How to flash files to board:
+#### 3. How to flash files to board:
 
    Memory locations of files
 	
@@ -247,7 +247,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 	-I- PMECC configure c0082805   
 
 
-   3.1. Set Address to 0x00 and from Scripts select "Send Boot File" click execute button.  
+#### 3.1. Set Address to 0x00 and from Scripts select "Send Boot File" click execute button.  
       Select at91sam9n12ek-nandflashboot-uboot-3.8.bin file and click open.
 
       It should print as below:
@@ -256,7 +256,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
    From now on execute button will not be used. Rest of the files will send with
    "Send File Name" folder selector and address setting.
 
-   3.2. Set Address to 0x40000 and from "Send File Name" folder selector 
+#### 3.2. Set Address to 0x40000 and from "Send File Name" folder selector 
       select "u-boot.bin" file and click "Send File".
 
       It should print as below:
@@ -271,7 +271,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 	   -I- 	0x1CD30 bytes written by applet
 
 
-   3.3. Set Address to 0x180000 and from "Send File Name" folder selector 
+#### 3.3. Set Address to 0x180000 and from "Send File Name" folder selector 
       select "at91sam9n12_sam_board_3.15.dtb" file and click "Send File".
       
       It should print as below:
@@ -282,7 +282,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 	   -I- 	0x20000 bytes written by applet
 
 
-   3.4. Set Address to 0x200000 and from "Send File Name" folder selector 
+#### 3.4. Set Address to 0x200000 and from "Send File Name" folder selector 
       select "uImage.bin" file and click "Send File".
       
       It should print as below:
@@ -297,7 +297,7 @@ Buildroot is used for custom linux distribution. Check step by step guide below 
 	   -I- 	0x191F0 bytes written by applet
 
 
-   3.5. Set Address to 0x800000 and from "Send File Name" folder selector 
+#### 3.5. Set Address to 0x800000 and from "Send File Name" folder selector 
       select "rootfs.ubi" file and click "Send File".
 
 
